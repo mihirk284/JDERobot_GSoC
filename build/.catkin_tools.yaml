@@ -1,6 +1,0 @@
-devel_space: /home/mihir/Documents/JDERobot_GSoC/devel
-install: false
-install_space: /home/mihir/Documents/JDERobot_GSoC/install
-profile: default
-source_space: /home/mihir/Documents/JDERobot_GSoC/src
-workspace: /home/mihir/Documents/JDERobot_GSoC
