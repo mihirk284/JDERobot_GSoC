@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
 
+
+import json
 import numpy as np
 from matplotlib import pyplot as plt
 import random   
@@ -17,13 +18,20 @@ class GOL:
         self.neighbours = list()
         self.variation = [(1,0), (0,1), (-1,0), (0,-1), (1,1), (-1,1), (1,-1), (-1,-1) ]
         self.env = np.random.randint(low = 0, high = 2, size = (self.size, self.size))
-    def init_env(self):
+    def init_env(self, tuple_list = None):
         self.active.clear()
-        self.env = np.random.randint(low =0, high = 2, size = (self.size, self.size))
-        for i in range(self.size):
-            for j in range(self.size):
-                if self.env[i,j] == 1:
-                    self.active.append((i,j))
+        #print(tuple_list)
+        self.env = np.zeros((self.size, self.size))
+        if (tuple_list == None):
+            self.env = np.random.randint(low =0, high = 2, size = (self.size, self.size))
+            for i in range(self.size):
+                for j in range(self.size):
+                    if self.env[i,j] == 1:
+                        self.active.append((i,j))
+        else:
+            for i in tuple_list:
+                self.env[i[0], i[1]] = 1
+                self.active.append(i)        
         self.populate_neighbours(self.active)
     def reset_env(self):
         self.env = np.zeros((self.size, self.size)).astype(int)
@@ -62,25 +70,58 @@ class GOL:
         self.active = self.active + self.next_iter
         self.populate_neighbours(self.active)
         self.next_iter.clear()
-    def print_env(self):
-        for i in range(self.size):
-            for j in range(self.size):
-                print(self.env[i,j], end = "")
-            print()
-        return
+    # def print_env(self):
+    #     for i in range(self.size):
+    #         for j in range(self.size):
+    #             print(self.env[i,j], end="")
+    #         print()
+    #     return
     def show_env(self):
         plt.clf()
         plt.imshow(game.env, cmap=plt.cm.gray)
         plt.draw()
         plt.show(block = False)
-        plt.pause(0.1)
+        plt.pause(0.02)
         return
 
 
 if __name__ == "__main__":
     game = GOL()
-    game.init_env()
-    for i in range(200):        
+    print("Select your environment type:-")
+    print("1) Random Environment")
+    print("2) Glider")
+    print("3) Beacon")
+    print("4) Light Weight Space Ship")
+    n = int(input("Enter Starting Choice:-"))
+    if (n == 1):
+        shape = None
+    elif (n == 2):
+        shape = 'glider'
+    elif (n == 3):
+        shape = 'beacon'
+    elif (n ==4):
+        shape = 'lwss'
+    else:
+        print("Error")
+    occupied_list = None
+    print("Shape is", shape)
+    if ( n > 1):
+        f = open('patterns.json')
+        data = json.load(f)
+        for i in data['members']:
+            if i['pattern'] == shape:
+                print("At shape glider")
+                x = i['x']
+                y = i['y']
+        occupied_list = list()
+        # print(x)
+        # print(y)
+        for j in zip(x,y):
+            occupied_list.append(j)
+    
+
+    game.init_env(occupied_list)
+    for i in range(500):        
         print("ITER "+str(i) + "\n\n")
         # for i in range(game.size):
         #     print(str(i), end="")
@@ -93,4 +134,4 @@ if __name__ == "__main__":
         game.update_vars()
         #print("Active: " +str(len(game.active)) + "\t Neighbourhood:"+ str(len(game.neighbours)))
         
-        time.sleep(0.1)
+        time.sleep(0.02)
