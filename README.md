@@ -69,7 +69,7 @@ OUTPUT
 </br>
 
 ## Python Challenge Solution
-The Python Challenge is present in python_challenge/scripts folder. The script is run using python3, and uses numpy as a dependency. Overall the result is diaplyed in teh terminal, but for easy of visualisation, a matplotlib plot is added.
+The Python Challenge is present in python_challenge/scripts folder. The script is run using python3, and uses numpy as a dependency. Overall the result is displyed in teh terminal, but for easy of visualisation, a matplotlib plot is added.
 
 To test the challenge run the following commands in a terminal:-
 ```
