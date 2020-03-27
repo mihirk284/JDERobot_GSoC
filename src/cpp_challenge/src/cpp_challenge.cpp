@@ -106,7 +106,6 @@ int main()
     }
     for(vector< string>::iterator k = vec.begin(); k!= vec.end(); k++)
     {
-
         cout << *k<<endl;
     }
 
