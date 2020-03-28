@@ -12,18 +12,30 @@ This is the repository for submitting the GSoC 2020 challenge code for JDERobot 
 
 The file structure of the submission is as follows:-
 ```
-JDERobot_GSoC
+./JDERobot_GSoC
 ├── README.md
-└── src
-    ├── cpp_challenge
-    │   └── src
-    │       ├── CMakeLists.txt
-    │       ├── cpp_challenge.cpp
-    │       └── input.txt
-    └── python_challenge
-        └── scripts
-            ├── game_of_life.py
-            └── patterns.json
+├── src
+│   ├── academy_challenge
+│   │   ├── gsoc2020-academy_test.pdf
+│   │   └── MyAlgorithm.py
+│   ├── cpp_challenge
+│   │   ├── gsoc2020-c++_test.pdf
+│   │   └── src
+│   │       ├── CMakeLists.txt
+│   │       ├── cpp_challenge.cpp
+│   │       └── input.txt
+│   └── python_challenge
+│       ├── gsoc2020-python_test.pdf
+│       └── scripts
+│           ├── game_of_life.py
+│           ├── gol_application.py
+│           ├── patterns.json
+│           └── test.py
+└── submission_images
+    ├── GOL1.png
+    └── GOL2.png
+
+
 ```
 </br>
 
@@ -74,7 +86,12 @@ The Python Challenge is present in python_challenge/scripts folder. The script i
 To test the challenge run the following commands in a terminal:-
 ```
 cd src/python_challenge/scripts
-python3 game_of_life.py
+#TEST SCRIPT
+python3 test.py
+
+#APPLICATION SCRIPT
+python3 gol_application.py
+
 ```
 
 Sample images of the environment in matplotlib are shown below:-
